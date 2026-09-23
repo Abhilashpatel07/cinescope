@@ -1,0 +1,39 @@
+<%- include("partials/header", { title: movie.title + " | CineScope" }) %>
+
+<section class="section">
+
+  <h1 class="section-title">
+    <%= movie.title %>
+  </h1>
+
+  <% if (movie.poster_path) { %>
+
+    <img
+      src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>"
+      alt="<%= movie.title %>"
+      style="max-width: 300px; border-radius: 10px;"
+    >
+
+  <% } %>
+
+  <div style="margin-top: 25px;">
+
+    <p>
+      <strong>Release Date:</strong>
+      <%= movie.release_date || "N/A" %>
+    </p>
+
+    <p style="margin-top: 10px;">
+      <strong>Rating:</strong>
+      ⭐ <%= movie.vote_average ? movie.vote_average.toFixed(1) : "N/A" %>
+    </p>
+
+    <p style="margin-top: 20px;">
+      <%= movie.overview || "No overview available." %>
+    </p>
+
+  </div>
+
+</section>
+
+<%- include("partials/footer") %>

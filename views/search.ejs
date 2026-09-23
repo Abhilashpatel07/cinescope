@@ -1,0 +1,55 @@
+<%- include("partials/header", { title: "Search Movies | CineScope" }) %>
+
+<section class="section">
+
+  <h1 class="section-title">
+    Search Results
+  </h1>
+
+  <form action="/search" method="GET" class="search-form">
+
+    <input
+      type="text"
+      name="query"
+      value="<%= query || '' %>"
+      placeholder="Search for a movie..."
+      required
+    >
+
+    <button type="submit" class="btn">
+      Search
+    </button>
+
+  </form>
+
+  <% if (query) { %>
+
+    <h2 style="margin: 30px 0 20px;">
+      Results for: "<%= query %>"
+    </h2>
+
+  <% } %>
+
+  <% if (movies && movies.length > 0) { %>
+
+    <div class="movie-grid">
+
+      <% movies.forEach(movie => { %>
+
+        <%- include("partials/movie-card", { movie }) %>
+
+      <% }) %>
+
+    </div>
+
+  <% } else { %>
+
+    <p style="margin-top: 30px;">
+      No movies found. Try another search.
+    </p>
+
+  <% } %>
+
+</section>
+
+<%- include("partials/footer") %>

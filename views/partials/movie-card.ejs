@@ -1,0 +1,38 @@
+<article class="movie-card">
+
+  <a href="/movie/<%= movie.id %>">
+
+    <% if (movie.poster_path) { %>
+
+      <img
+        src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>"
+        alt="<%= movie.title %> poster"
+        loading="lazy"
+      >
+
+    <% } else { %>
+
+      <img
+        src="/images/no-poster.png"
+        alt="No poster available"
+      >
+
+    <% } %>
+
+    <div class="movie-info">
+
+      <h3><%= movie.title %></h3>
+
+      <p>
+        ⭐ <%= movie.vote_average ? movie.vote_average.toFixed(1) : "N/A" %>
+      </p>
+
+      <p>
+        <%= movie.release_date || "Release date unavailable" %>
+      </p>
+
+    </div>
+
+  </a>
+
+</article>

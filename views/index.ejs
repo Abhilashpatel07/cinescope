@@ -1,0 +1,41 @@
+<%- include("partials/header", { title: "CineScope | Home" }) %>
+
+<section class="hero">
+
+  <h1>Discover Your Next Favorite Movie</h1>
+
+  <p>
+    Search thousands of movies and explore the world of cinema.
+  </p>
+
+  <form action="/search" method="GET" class="search-form">
+
+    <input
+      type="text"
+      name="query"
+      placeholder="Search for a movie..."
+      required
+    >
+
+    <button type="submit" class="btn">
+      Search
+    </button>
+
+  </form>
+
+</section>
+
+<section class="section">
+
+  <h2 class="section-title">
+    Welcome to CineScope
+  </h2>
+
+  <p>
+    Your personal movie discovery platform.
+    Search movies, explore details, and build your watchlist.
+  </p>
+
+</section>
+
+<%- include("partials/footer") %>
