@@ -57,3 +57,40 @@ exports.getMovieDetails = async (movieId) => {
     throw error;
   }
 };
+
+// Get official movie trailer
+exports.getMovieTrailer = async (movieId) => {
+  try {
+    const response = await tmdbApi.get(`/movie/${movieId}/videos`, {
+      params: {
+        language: "en-US"
+      }
+    });
+
+    const videos = response.data.results || [];
+
+    // Prefer official YouTube trailers
+    const trailer =
+      videos.find(
+        (video) =>
+          video.site === "YouTube" &&
+          video.type === "Trailer" &&
+          video.official
+      ) ||
+      videos.find(
+        (video) =>
+          video.site === "YouTube" &&
+          video.type === "Trailer"
+      );
+
+    return trailer || null;
+
+  } catch (error) {
+    console.error(
+      "TMDB trailer error:",
+      error.response?.data || error.message
+    );
+
+    throw error;
+  }
+};
